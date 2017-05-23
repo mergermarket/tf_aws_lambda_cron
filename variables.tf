@@ -1,13 +1,13 @@
 variable "s3_bucket" {
-  description = "The name of the bucket containing your uploaded lambda deployment package"
+  description = "The name of the bucket containing your uploaded lambda deployment package."
 }
 
 variable "s3_key" {
-  description = "The s3 key for your Lambda deployment package"
+  description = "The s3 key for your Lambda deployment package."
 }
 
 variable "function_name" {
-  description = "The name of the lambda function"
+  description = "The name of the lambda function."
 }
 
 variable "handler" {
@@ -19,11 +19,15 @@ variable "runtime" {
 }
 
 variable "lambda_env" {
-  description = "Environment parameters passed to the lambda function"
+  description = "Environment parameters passed to the lambda function."
   type        = "map"
   default     = {}
 }
 
 variable "lambda_iam_policy_name" {
-  description = "The name for the Lambda functions IAM policy"
+  description = "The name for the Lambda functions IAM policy."
+}
+
+variable "lambda_cron_schedule" {
+  description = "The sceduling expression for how often the lambda function runs."
 }

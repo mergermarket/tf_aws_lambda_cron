@@ -71,15 +71,15 @@ class TestCreateTaskdef(unittest.TestCase):
         ]).decode('utf-8')
 
         assert dedent("""
-        + module.lambda.aws_cloudwatch_event_rule.cron_five_minutes
+        + module.lambda.aws_cloudwatch_event_rule.cron_schedule
             arn:                 "<computed>"
-            description:         "Fires every five minutes"
+            description:         "This event will run according to a schedule"
             is_enabled:          "true"
-            name:                "cron_five_minutes"
+            name:                "cron_schedule"
             schedule_expression: "rate(5 minutes)"
 
-        + module.lambda.aws_cloudwatch_event_target.call_lambda_every_five_minutes
+        + module.lambda.aws_cloudwatch_event_target.event_target
             arn:       "${aws_lambda_function.lambda_function.arn}"
-            rule:      "cron_five_minutes"
+            rule:      "cron_schedule"
             target_id: "lambda_function"
         """).strip() in output

@@ -19,6 +19,7 @@ module "lambda" {
   runtime                = "python"
   lambda_env             = "${var.lambda_env}"
   lambda_iam_policy_name = "lambda-IAM-policy-name"
+  lambda_cron_schedule   = "rate(5 minutes)"
 }
 
 variable "lambda_env" {

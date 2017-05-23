@@ -5,6 +5,7 @@ resource "aws_lambda_function" "lambda_function" {
   role          = "${aws_iam_role.iam_for_lambda.arn}"
   handler       = "${var.handler}"
   runtime       = "${var.runtime}"
+
   environment {
     variables = "${var.lambda_env}"
   }
@@ -28,4 +29,8 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   function_name = "${aws_lambda_function.lambda_function.function_name}"
   principal     = "events.amazonaws.com"
   source_arn    = "${aws_cloudwatch_event_rule.cron_five_minutes.arn}"
+}
+
+output "lambda_arn" {
+  value = "${aws_lambda_function.lambda_function.arn}"
 }

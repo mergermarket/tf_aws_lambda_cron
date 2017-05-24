@@ -12,14 +12,13 @@ resource "aws_lambda_function" "lambda_function" {
 }
 
 resource "aws_cloudwatch_event_rule" "cron_schedule" {
-  name                = "cron_schedule"
-  description         = "This event will run according to a schedule"
+  name                = "${var.function_name}-cron_schedule"
+  description         = "This event will run according to a schedule for lambda ${var.function_name}"
   schedule_expression = "${var.lambda_cron_schedule}"
 }
 
 resource "aws_cloudwatch_event_target" "event_target" {
   rule      = "${aws_cloudwatch_event_rule.cron_schedule.name}"
-  target_id = "lambda_function"
   arn       = "${aws_lambda_function.lambda_function.arn}"
 }
 

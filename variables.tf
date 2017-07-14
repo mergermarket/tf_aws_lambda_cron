@@ -36,3 +36,15 @@ variable "lambda_iam_policy_name" {
 variable "lambda_cron_schedule" {
   description = "The sceduling expression for how often the lambda function runs."
 }
+
+variable "subnet_ids" {
+  type        = "list"
+  description = "The VPC subnets in which the lambda runs"
+  default     = []
+}
+
+variable "security_group_ids" {
+  type        = "list"
+  description = "The VPC security groups assigned to the lambda"
+  default     = []
+}

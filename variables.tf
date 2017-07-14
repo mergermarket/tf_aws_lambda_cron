@@ -19,7 +19,7 @@ variable "runtime" {
 }
 
 variable "timeout" {
-  description = "The maximum time that the lambda can run for"
+  description = "The maximum time in seconds that the lambda can run for"
   default     = 3
 }
 

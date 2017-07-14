@@ -8,8 +8,8 @@ resource "aws_lambda_function" "lambda_function" {
   timeout       = "${var.timeout}"
 
   vpc_config {
-    subnet_ids         = "${list(var.subnet_ids)}"
-    security_group_ids = "${list(var.security_group_ids)}"
+    subnet_ids         = "${var.subnet_ids}"
+    security_group_ids = "${var.security_group_ids}"
   }
 
   environment {

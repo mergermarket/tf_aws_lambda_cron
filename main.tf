@@ -7,6 +7,11 @@ resource "aws_lambda_function" "lambda_function" {
   runtime       = "${var.runtime}"
   timeout       = "${var.timeout}"
 
+  vpc_config {
+    subnet_ids         = "${var.subnet_ids}"
+    security_group_ids = ["${var.security_group_ids}"]
+  }
+
   environment {
     variables = "${var.lambda_env}"
   }

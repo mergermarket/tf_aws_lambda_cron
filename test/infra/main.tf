@@ -20,6 +20,20 @@ module "lambda" {
   lambda_env             = "${var.lambda_env}"
   lambda_iam_policy_name = "lambda-IAM-policy-name"
   lambda_cron_schedule   = "rate(5 minutes)"
+  subnet_ids             = "${var.subnet_ids}"
+  security_group_ids     = "${var.security_group_ids}"
+}
+
+variable "subnet_ids" {
+  type        = "list"
+  description = "The VPC subnets in which the lambda runs"
+  default     = []
+}
+
+variable "security_group_ids" {
+  type        = "list"
+  description = "The VPC security groups assigned to the lambda"
+  default     = []
 }
 
 variable "lambda_env" {

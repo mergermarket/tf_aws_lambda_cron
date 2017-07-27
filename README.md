@@ -1,5 +1,7 @@
 # AWS Lambda Cron Terraform Module
 
+[![Build Status](https://travis-ci.org/mergermarket/tf_aws_lambda_cron.svg?branch=master)](https://travis-ci.org/mergermarket/tf_aws_lambda_cron)
+
 This module will deploy a lambda function and a cron rule to run the lambda function on a schedule.
 
 ## Module Input Variables

@@ -19,7 +19,7 @@ class TestCreateTaskdef(unittest.TestCase):
             'test/infra'
         ]).decode('utf-8')
         assert dedent("""
-            Plan: 6 to add, 0 to change, 0 to destroy.
+            Plan: 5 to add, 0 to change, 0 to destroy.
         """).strip() in output
 
     def test_create_lambda(self):
@@ -61,31 +61,31 @@ class TestCreateTaskdef(unittest.TestCase):
             'test/infra'
         ]).decode('utf-8')
         assert dedent("""
-             + module.lambda.aws_lambda_function.lambda_function
-                 arn:                                        "<computed>"
-                 environment.#:                              "1"
-                 function_name:                              "check_lambda_function"
-                 handler:                                    "some_handler"
-                 invoke_arn:                                 "<computed>"
-                 last_modified:                              "<computed>"
-                 memory_size:                                "128"
-                 publish:                                    "false"
-                 qualified_arn:                              "<computed>"
-                 role:                                       "${aws_iam_role.iam_for_lambda.arn}"
-                 runtime:                                    "python"
-                 s3_bucket:                                  "cdflow-lambda-releases"
-                 s3_key:                                     "s3key.zip"
-                 source_code_hash:                           "<computed>"
-                 timeout:                                    "3"
-                 version:                                    "<computed>"
-                 vpc_config.#:                               "1"
-                 vpc_config.0.security_group_ids.#:          "1"
-                 vpc_config.0.security_group_ids.4088798008: "4"
-                 vpc_config.0.subnet_ids.#:                  "3"
-                 vpc_config.0.subnet_ids.1842515611:         "3"
-                 vpc_config.0.subnet_ids.2212294583:         "1"
-                 vpc_config.0.subnet_ids.450215437:          "2"
-                 vpc_config.0.vpc_id:                        "<computed>"
++ module.lambda.aws_lambda_function.lambda_function
+    arn:                                        "<computed>"
+    environment.#:                              "1"
+    function_name:                              "check_lambda_function"
+    handler:                                    "some_handler"
+    invoke_arn:                                 "<computed>"
+    last_modified:                              "<computed>"
+    memory_size:                                "128"
+    publish:                                    "false"
+    qualified_arn:                              "<computed>"
+    role:                                       "${aws_iam_role.iam_for_lambda.arn}"
+    runtime:                                    "python"
+    s3_bucket:                                  "cdflow-lambda-releases"
+    s3_key:                                     "s3key.zip"
+    source_code_hash:                           "<computed>"
+    timeout:                                    "3"
+    version:                                    "<computed>"
+    vpc_config.#:                               "1"
+    vpc_config.0.security_group_ids.#:          "1"
+    vpc_config.0.security_group_ids.4088798008: "4"
+    vpc_config.0.subnet_ids.#:                  "3"
+    vpc_config.0.subnet_ids.1842515611:         "3"
+    vpc_config.0.subnet_ids.2212294583:         "1"
+    vpc_config.0.subnet_ids.450215437:          "2"
+    vpc_config.0.vpc_id:                        "<computed>"
         """).strip() in output
 
     def test_lambda_in_vpc_gets_correct_execution_role(self):
@@ -101,19 +101,6 @@ class TestCreateTaskdef(unittest.TestCase):
             + module.lambda.aws_iam_role_policy_attachment.vpc_permissions
                 policy_arn: "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
                 role:       "${aws_iam_role.iam_for_lambda.name}"
-        """).strip() in output
-
-    def test_iam_policy_name_for_lambda_created(self):
-        output = check_output([
-            'terraform',
-            'plan',
-            '-no-color',
-            'test/infra'
-        ]).decode('utf-8')
-
-        assert dedent("""
-            + module.lambda.aws_iam_role_policy.lambda_policy
-                name:   "lambda-IAM-policy-name"
         """).strip() in output
 
     def test_cloudwatch_event_rule_created(self):

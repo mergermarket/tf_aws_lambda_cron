@@ -37,11 +37,6 @@ variable "security_group_ids" {
   description = "The VPC security groups assigned to the lambda"
 }
 
-variable "vpc_id" {
-  type        = "string"
-  description = "The VPC in which the lambda runs"
-}
-
 // Optional Variables
 variable "timeout" {
   description = "The maximum time in seconds that the lambda can run for"

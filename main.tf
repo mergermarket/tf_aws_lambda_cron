@@ -24,8 +24,8 @@ resource "aws_cloudwatch_event_rule" "cron_schedule" {
 }
 
 resource "aws_cloudwatch_event_target" "event_target" {
-  rule      = "${aws_cloudwatch_event_rule.cron_schedule.name}"
-  arn       = "${aws_lambda_function.lambda_function.arn}"
+  rule = "${aws_cloudwatch_event_rule.cron_schedule.name}"
+  arn  = "${aws_lambda_function.lambda_function.arn}"
 }
 
 resource "aws_lambda_permission" "allow_cloudwatch" {
@@ -34,8 +34,4 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   function_name = "${aws_lambda_function.lambda_function.function_name}"
   principal     = "events.amazonaws.com"
   source_arn    = "${aws_cloudwatch_event_rule.cron_schedule.arn}"
-}
-
-output "lambda_arn" {
-  value = "${aws_lambda_function.lambda_function.arn}"
 }

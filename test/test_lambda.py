@@ -16,6 +16,7 @@ class TestCreateTaskdef(unittest.TestCase):
             'terraform',
             'plan',
             '-no-color',
+            '-target=module.lambda',
             'test/infra'
         ]).decode('utf-8')
         assert dedent("""
@@ -27,6 +28,7 @@ class TestCreateTaskdef(unittest.TestCase):
             'terraform',
             'plan',
             '-no-color',
+            '-target=module.lambda',
             'test/infra'
         ]).decode('utf-8')
         assert dedent("""
@@ -58,6 +60,7 @@ class TestCreateTaskdef(unittest.TestCase):
             '-var', 'subnet_ids=[1,2,3]',
             '-var', 'security_group_ids=[4]',
             '-no-color',
+            '-target=module.lambda',
             'test/infra'
         ]).decode('utf-8')
         assert dedent("""
@@ -95,6 +98,7 @@ class TestCreateTaskdef(unittest.TestCase):
             '-var', 'subnet_ids=[1,2,3]',
             '-var', 'security_group_ids=[4]',
             '-no-color',
+            '-target=module.lambda',
             'test/infra'
         ]).decode('utf-8')
         assert dedent("""
@@ -108,6 +112,7 @@ class TestCreateTaskdef(unittest.TestCase):
             'terraform',
             'plan',
             '-no-color',
+            '-target=module.lambda',
             'test/infra'
         ]).decode('utf-8')
         assert dedent("""
@@ -121,5 +126,27 @@ class TestCreateTaskdef(unittest.TestCase):
         + module.lambda.aws_cloudwatch_event_target.event_target
             arn:       "${aws_lambda_function.lambda_function.arn}"
             rule:      "check_lambda_function-cron_schedule"
+            target_id: "<computed>"
+        """).strip() in output
+    
+    def test_cloudwatch_event_rule_created_shorten_name(self):
+        output = check_output([
+            'terraform',
+            'plan',
+            '-no-color',
+            '-target=module.lambda_long_name',
+            'test/infra'
+        ]).decode('utf-8')
+        assert dedent("""
+        + module.lambda_long_name.aws_cloudwatch_event_rule.cron_schedule
+            arn:                 "<computed>"
+            description:         "This event will run according to a schedule for lambda check_lambda_function_with_a_really_long_name_should_be_truncated"
+            is_enabled:          "true"
+            name:                "check_lambda_function_with_a_really_long_name_should_be_truncate"
+            schedule_expression: "rate(5 minutes)"
+
+        + module.lambda_long_name.aws_cloudwatch_event_target.event_target
+            arn:       "${aws_lambda_function.lambda_function.arn}"
+            rule:      "check_lambda_function_with_a_really_long_name_should_be_truncate"
             target_id: "<computed>"
         """).strip() in output

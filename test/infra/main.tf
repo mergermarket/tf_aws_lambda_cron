@@ -21,8 +21,23 @@ module "lambda" {
   lambda_iam_policy_name = "lambda-IAM-policy-name"
   lambda_cron_schedule   = "rate(5 minutes)"
 
-  subnet_ids             = "${var.subnet_ids}"
-  security_group_ids     = "${var.security_group_ids}"
+  subnet_ids         = "${var.subnet_ids}"
+  security_group_ids = "${var.security_group_ids}"
+}
+
+module "lambda_long_name" {
+  source                 = "../.."
+  s3_bucket              = "cdflow-lambda-releases"
+  s3_key                 = "s3key.zip"
+  function_name          = "check_lambda_function_with_a_really_long_name_should_be_truncated"
+  handler                = "some_handler"
+  runtime                = "python"
+  lambda_env             = "${var.lambda_env}"
+  lambda_iam_policy_name = "lambda-IAM-policy-name"
+  lambda_cron_schedule   = "rate(5 minutes)"
+
+  subnet_ids         = "${var.subnet_ids}"
+  security_group_ids = "${var.security_group_ids}"
 }
 
 variable "subnet_ids" {

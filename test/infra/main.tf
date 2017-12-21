@@ -18,7 +18,6 @@ module "lambda" {
   handler                = "some_handler"
   runtime                = "python"
   lambda_env             = "${var.lambda_env}"
-  lambda_iam_policy_name = "lambda-IAM-policy-name"
   lambda_cron_schedule   = "rate(5 minutes)"
 
   subnet_ids         = "${var.subnet_ids}"
@@ -33,7 +32,6 @@ module "lambda_long_name" {
   handler                = "some_handler"
   runtime                = "python"
   lambda_env             = "${var.lambda_env}"
-  lambda_iam_policy_name = "lambda-IAM-policy-name"
   lambda_cron_schedule   = "rate(5 minutes)"
 
   subnet_ids         = "${var.subnet_ids}"

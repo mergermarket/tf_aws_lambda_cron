@@ -1,6 +1,6 @@
 // Required Variables
 variable "s3_bucket" {
-  description = "The name of the bucket containing your uploaded lambda deployment package."
+  description = "The name of the bucket containing your uploaded Lambda deployment package."
 }
 
 variable "s3_key" {
@@ -8,7 +8,7 @@ variable "s3_key" {
 }
 
 variable "function_name" {
-  description = "The name of the lambda function."
+  description = "The name of the Lambda function."
 }
 
 variable "handler" {
@@ -20,27 +20,27 @@ variable "runtime" {
 }
 
 variable "lambda_cron_schedule" {
-  description = "The sceduling expression for how often the lambda function runs."
+  description = "The sceduling expression for how often the Lambda function runs."
 }
 
 variable "subnet_ids" {
   type        = "list"
-  description = "The VPC subnets in which the lambda runs"
+  description = "The VPC subnets in which the Lambda runs"
 }
 
 variable "security_group_ids" {
   type        = "list"
-  description = "The VPC security groups assigned to the lambda"
+  description = "The VPC security groups assigned to the Lambda"
 }
 
 // Optional Variables
 variable "timeout" {
-  description = "The maximum time in seconds that the lambda can run for"
+  description = "The maximum time in seconds that the Lambda can run for"
   default     = 3
 }
 
 variable "lambda_env" {
-  description = "Environment parameters passed to the lambda function."
+  description = "Environment parameters passed to the Lambda function."
   type        = "map"
   default     = {}
 }

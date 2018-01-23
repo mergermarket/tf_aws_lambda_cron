@@ -40,18 +40,18 @@ module "lambda_long_name" {
 
 variable "subnet_ids" {
   type        = "list"
-  description = "The VPC subnets in which the lambda runs"
+  description = "The VPC subnets in which the Lambda runs"
   default     = []
 }
 
 variable "security_group_ids" {
   type        = "list"
-  description = "The VPC security groups assigned to the lambda"
+  description = "The VPC security groups assigned to the Lambda"
   default     = []
 }
 
 variable "lambda_env" {
-  description = "Environment parameters passed to the lambda function"
+  description = "Environment parameters passed to the Lambda function"
   type        = "map"
   default     = {}
 }

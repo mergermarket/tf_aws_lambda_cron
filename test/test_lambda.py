@@ -118,7 +118,7 @@ class TestCreateTaskdef(unittest.TestCase):
         assert dedent("""
         + module.lambda.aws_cloudwatch_event_rule.cron_schedule
             arn:                 "<computed>"
-            description:         "This event will run according to a schedule for lambda check_lambda_function"
+            description:         "This event will run according to a schedule for Lambda check_lambda_function"
             is_enabled:          "true"
             name:                "check_lambda_function-cron_schedule"
             schedule_expression: "rate(5 minutes)"
@@ -128,7 +128,7 @@ class TestCreateTaskdef(unittest.TestCase):
             rule:      "check_lambda_function-cron_schedule"
             target_id: "<computed>"
         """).strip() in output
-    
+
     def test_cloudwatch_event_rule_created_shorten_name(self):
         output = check_output([
             'terraform',
@@ -140,7 +140,7 @@ class TestCreateTaskdef(unittest.TestCase):
         assert dedent("""
         + module.lambda_long_name.aws_cloudwatch_event_rule.cron_schedule
             arn:                 "<computed>"
-            description:         "This event will run according to a schedule for lambda check_lambda_function_with_a_really_long_name_should_be_truncated"
+            description:         "This event will run according to a schedule for Lambda check_lambda_function_with_a_really_long_name_should_be_truncated"
             is_enabled:          "true"
             name:                "check_lambda_function_with_a_really_long_name_should_be_truncate"
             schedule_expression: "rate(5 minutes)"

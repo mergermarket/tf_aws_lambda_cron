@@ -23,17 +23,6 @@ variable "lambda_cron_schedule" {
   description = "The sceduling expression for how often the Lambda function runs."
 }
 
-variable "subnet_ids" {
-  type        = "list"
-  description = "The VPC subnets in which the Lambda runs"
-}
-
-variable "security_group_ids" {
-  type        = "list"
-  description = "The VPC security groups assigned to the Lambda"
-}
-
-// Optional Variables
 variable "timeout" {
   description = "The maximum time in seconds that the Lambda can run for"
   default     = 3
@@ -43,9 +32,4 @@ variable "lambda_env" {
   description = "Environment parameters passed to the Lambda function."
   type        = "map"
   default     = {}
-}
-
-variable "lambda_iam_policy_name" {
-  description = "[DEPRECATED] The name for the Lambda functions IAM policy."
-  default     = ""
 }

@@ -39,6 +39,11 @@ variable "timeout" {
   default     = 3
 }
 
+variable "memory_size" {
+  description = "The memory in Gb that the function can use"
+  default     = 128
+}
+
 variable "lambda_env" {
   description = "Environment parameters passed to the Lambda function."
   type        = "map"

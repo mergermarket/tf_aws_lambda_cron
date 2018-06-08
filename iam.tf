@@ -1,5 +1,6 @@
 resource "aws_iam_role" "iam_for_lambda" {
-  name_prefix        = "${replace(replace(var.function_name, "/(.{0,32}).*/", "$1"), "/^-+|-+$/", "")}"
+  name_prefix = "${replace(replace(var.function_name, "/(.{0,32}).*/", "$1"), "/^-+|-+$/", "")}"
+
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",

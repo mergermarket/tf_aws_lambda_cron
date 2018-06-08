@@ -16,7 +16,6 @@ This module will deploy a Lambda function and a cron rule to run the Lambda func
 - `security_group_ids` (list) - **REQUIRED** - The ids of VPC security groups to assign to the Lambda.
 - `timeout` (string) - _optional_ - The number of seconds the Lambda will be allowed to run for.
 - `lambda_env` - (string) - _optional_ - Environment parameters passed to the Lambda function.
-- `lambda_iam_policy_name` (string) - _optional_ - [DEPRECATED] The name for the Lambda functions IAM policy.
 
 
 ## Usage

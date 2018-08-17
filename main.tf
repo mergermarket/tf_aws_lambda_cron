@@ -22,6 +22,7 @@ resource "aws_cloudwatch_event_rule" "cron_schedule" {
   name                = "${replace("${var.function_name}-cron_schedule", "/(.{0,64}).*/", "$1")}"
   description         = "This event will run according to a schedule for Lambda ${var.function_name}"
   schedule_expression = "${var.lambda_cron_schedule}"
+  is_enabled          = "${var.is_enabled}"
 }
 
 resource "aws_cloudwatch_event_target" "event_target" {

@@ -54,3 +54,8 @@ variable "lambda_iam_policy_name" {
   description = "[DEPRECATED] The name for the Lambda functions IAM policy."
   default     = ""
 }
+
+variable "is_enabled" {
+  description = "Whether the rule should be enabled. (Defaults to True)"
+  default     = true
+}

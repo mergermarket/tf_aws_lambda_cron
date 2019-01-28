@@ -67,6 +67,5 @@ variable "is_enabled" {
 
 variable "layers" {
   description = "Define dependencies contained in Lambda layer"
-  type        = "list"
   default     = []
 }

@@ -7,7 +7,7 @@ resource "aws_lambda_function" "lambda_function" {
   runtime       = "${var.runtime}"
   timeout       = "${var.timeout}"
   memory_size   = "${var.memory_size}"
-  layers        = ["arn:aws:lambda:eu-west-1:301464641084:layer:dnspython:3"]
+  layers        = ["${var.layer}"]
 
   vpc_config {
     subnet_ids         = ["${var.subnet_ids}"]

@@ -64,3 +64,8 @@ variable "is_enabled" {
   description = "Whether the rule should be enabled. (Defaults to True)"
   default     = true
 }
+
+variable "layer" {
+  description = "Layer ARN - needs to include the version number"
+  default     = ""
+}

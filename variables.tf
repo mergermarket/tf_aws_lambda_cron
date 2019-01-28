@@ -64,8 +64,3 @@ variable "is_enabled" {
   description = "Whether the rule should be enabled. (Defaults to True)"
   default     = true
 }
-
-variable "layers" {
-  description = "Define dependencies contained in Lambda layer"
-  default     = []
-}

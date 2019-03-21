@@ -20,7 +20,7 @@ class TestCreateTaskdef(unittest.TestCase):
             'test/infra'
         ]).decode('utf-8')
         assert dedent("""
-            Plan: 5 to add, 0 to change, 0 to destroy.
+            Plan: 6 to add, 0 to change, 0 to destroy.
         """).strip() in output
 
     def test_create_lambda(self):

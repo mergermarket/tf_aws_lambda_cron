@@ -18,6 +18,13 @@ resource "aws_iam_role" "iam_for_lambda" {
 EOF
 }
 
+resource "aws_iam_role_policy" "lambda_policy" {
+  role = "${aws_iam_role.iam_for_lambda.id}"
+  name = "policy"
+
+  policy = "${var.lambda_role_policy}"
+}
+
 resource "aws_iam_role_policy_attachment" "vpc_permissions" {
   role       = "${aws_iam_role.iam_for_lambda.name}"
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"

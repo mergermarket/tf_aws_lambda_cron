@@ -39,6 +39,25 @@ variable "datadog_log_subscription_arn" {
   default     = ""
 }
 
+variable "lambda_role_policy" {
+  description = "The Lambda IAM Role Policy."
+  default = <<END
+{
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:*:*:*"
+    }
+  ]
+}
+END
+}
+
 variable "timeout" {
   description = "The maximum time in seconds that the Lambda can run for"
   default     = 3
